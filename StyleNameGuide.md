@@ -1,7 +1,3 @@
-# H1
-## H2
-### H3
-
 # Club Utils Style Guide
 ## Naming Conventions
 ### Class Names
@@ -32,18 +28,18 @@ FULLCAPS: EXAMPLECONSTANT
 
 | ID | ClubName | Balance |
 
-1. Bulletins:
+2. Bulletins:
 
 | ID | Heading | Timestamp | Text | ClubName |
 
-1. Events:
+3. Events:
 
 | ID | EventName | EventTime | ClubName |
 
-1. Users:
+4. Users:
 
 | ID | FullName | Email | Password | Club | Rank |
 
-1. Attendance:
+5. Attendance:
 
 | ID | Club | Date | FullName |
