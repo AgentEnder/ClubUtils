@@ -38,8 +38,8 @@ FULLCAPS: EXAMPLECONSTANT
 
 4. Users:
 
-| ID | FullName | Email | Password | Club | Rank |
+| ID | FullName | Email | Password | ClubName | Rank |
 
 5. Attendance:
 
-| ID | Club | Date | FullName |
+| ID | ClubName | Date | FullName |
