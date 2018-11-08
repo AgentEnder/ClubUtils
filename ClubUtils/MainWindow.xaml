@@ -17,5 +17,21 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
+            <DockPanel>
+                <Label Content="Username: " DockPanel.Dock="Left"/>
+                <TextBox Name="username" HorizontalAlignment="Right" Width="150" DockPanel.Dock="Right"/>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="Password: " DockPanel.Dock="Left"/>
+                <PasswordBox ToolTip="Password" Width="150" HorizontalAlignment="Right" DockPanel.Dock="Right" PasswordChar="*"/>
+            </DockPanel>
+            <Label Content="Choose Your Club!" HorizontalAlignment="Center"/>
+            <ComboBox Name="ClubPicker"></ComboBox>
+            
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="2" Name="LogIn" Click="LogIn_Click">
+            <Label Content="Log In!"/>
+        </Button>
     </Grid>
 </Window>

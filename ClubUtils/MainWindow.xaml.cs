@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SQLite;
 
 namespace ClubUtils
 {
@@ -24,7 +25,13 @@ namespace ClubUtils
         {
             ConsoleHelper.Create();
             Console.WriteLine("CLUB UTILS SIGN IN WINDOW OPENED");
+            
             InitializeComponent();
+        }
+
+        private void LogIn_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("USER: " + username.Text + " TRIED TO LOGIN");
         }
     }
 }
