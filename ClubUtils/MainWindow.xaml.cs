@@ -22,6 +22,8 @@ namespace ClubUtils
     {
         public MainWindow()
         {
+            ConsoleHelper.Create();
+            Console.WriteLine("CLUB UTILS SIGN IN WINDOW OPENED");
             InitializeComponent();
         }
     }
