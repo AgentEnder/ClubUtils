@@ -14,23 +14,31 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1.25*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
-            <DockPanel>
-                <Label Content="Username: " DockPanel.Dock="Left"/>
-                <TextBox Name="username" HorizontalAlignment="Right" Width="150" DockPanel.Dock="Right"/>
-            </DockPanel>
-            <DockPanel>
-                <Label Content="Password: " DockPanel.Dock="Left"/>
-                <PasswordBox ToolTip="Password" Width="150" HorizontalAlignment="Right" DockPanel.Dock="Right" PasswordChar="*"/>
-            </DockPanel>
-            <Label Content="Choose Your Club!" HorizontalAlignment="Center"/>
-            <ComboBox Name="ClubPicker"></ComboBox>
-            
-        </StackPanel>
-        <Button Grid.Column="1" Grid.Row="2" Name="LogIn" Click="LogIn_Click">
+        <Border Grid.Column="1" Grid.Row="1" Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2">
+            <StackPanel  Orientation="Vertical">
+                <DockPanel Margin="5">
+                    <Label Content="Email: " DockPanel.Dock="Left"/>
+                    <TextBox Name="email" TextAlignment="Right" HorizontalAlignment="Right" Width="150" DockPanel.Dock="Right"/>
+                </DockPanel>
+                <DockPanel Margin="5">
+                    <Label Content="Password: " DockPanel.Dock="Left"/>
+                    <PasswordBox Name="password" HorizontalContentAlignment="Right" ToolTip="Password" Width="150" HorizontalAlignment="Right" DockPanel.Dock="Right" PasswordChar="*"/>
+                </DockPanel>
+                <DockPanel Margin="5">
+                    <Label Content="Choose Your Club!" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
+                    <ComboBox Name="ClubPicker" DockPanel.Dock="Bottom"/>
+                </DockPanel>
+            </StackPanel>
+        </Border>
+        <DockPanel Grid.Column="1" Grid.Row="2" Margin="10">
+            <Label Content="New Account?" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
+            <CheckBox Name="new_account" DockPanel.Dock="Bottom" HorizontalAlignment="Center"/>
+        </DockPanel>
+        <Button Grid.Column="1" Grid.Row="3" Name="LogIn" Click="LogIn_Click">
             <Label Content="Log In!"/>
         </Button>
     </Grid>

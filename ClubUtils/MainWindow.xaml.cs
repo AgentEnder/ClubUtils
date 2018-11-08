@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SQLite;
+using System.Security;
 
 namespace ClubUtils
 {
@@ -21,17 +22,41 @@ namespace ClubUtils
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<string> clubs = DBHelper.getClubNames();
         public MainWindow()
         {
             ConsoleHelper.Create();
             Console.WriteLine("CLUB UTILS SIGN IN WINDOW OPENED");
-            
+            DBHelper.connect();
             InitializeComponent();
+            ClubPicker.ItemsSource = clubs;
         }
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("USER: " + username.Text + " TRIED TO LOGIN");
+            if (ClubPicker.SelectedIndex != -1 && email.Text != "" && password.SecurePassword.Length > 0)
+            {
+                if (new_account.IsChecked == true)
+                {
+                    string values = "(null, '";
+                    values += email.Text + "',";
+                    values += "null,'" + password.SecurePassword.GetHashCode();
+                    values += "','" + ClubPicker.SelectedValue.ToString();
+                    values+="','user')";
+                    string query = "INSERT INTO `Users`(`ID`,`FullName`,`Email`,`Password`,`ClubName`,`Rank`) VALUES " + values;
+                    Console.WriteLine(query);
+                    DBHelper.ExecuteNonQuery(query);
+                }
+                else
+                {
+                    //TRY LOGIN
+                }
+                Console.WriteLine("USER: " + email.Text + " TRIED TO LOGIN");
+            }
+            else
+            {
+                //Require all fields
+            }
         }
     }
 }
