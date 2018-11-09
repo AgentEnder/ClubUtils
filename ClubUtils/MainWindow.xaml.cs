@@ -24,5 +24,35 @@ namespace ClubUtils
             InitializeComponent();
             welcomeLabel.Content += Globals.currentMember.fullName;
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem mi = e.Source as MenuItem;
+
+            switch (mi.Name)
+            {
+                case "Attendance":
+                    { 
+                        break;
+                    }
+
+                case "Membership":
+                    {
+                        MembershipTracker test = new MembershipTracker();
+                        test.Show();
+                        this.Close();
+                        break;
+                    }
+
+                case "Financials":
+                    {
+                        break;
+                    }
+                case "Emails":
+                    {
+                        break;
+                    }
+            }
+        }
     }
 }

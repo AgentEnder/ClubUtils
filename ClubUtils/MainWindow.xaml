@@ -15,11 +15,11 @@
                     <Separator />
                     <MenuItem Header="_Exit" />
                 </MenuItem>
-            <MenuItem Header="Club Admin">
-                <MenuItem Header="View Attendace" />
-                <MenuItem Header="View Membership" />
-                <MenuItem Header="View Financials" />
-                <MenuItem Header="Send Emails" />
+            <MenuItem Header="Club Admin" Click="MenuItem_Click">
+                <MenuItem Header="View Attendace" Name="Attendance" />
+                <MenuItem Header="View Membership" Name="Membership" />
+                <MenuItem Header="View Financials" Name="Financials" />
+                <MenuItem Header="Send Emails" Name="Emails" />
             </MenuItem>
         </Menu>
 
