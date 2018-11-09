@@ -11,6 +11,7 @@ namespace ClubUtils
     public partial class Login : Window
     {
         private List<string> clubs = DBHelper.getClubNames();
+
         public Login()
         {
             ConsoleHelper.Create();

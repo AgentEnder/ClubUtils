@@ -8,7 +8,6 @@ namespace ClubUtils
 {
     class Globals
     {
-        public static Club currentClub;
         public static Member currentMember;
     }
 }

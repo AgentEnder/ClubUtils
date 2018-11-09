@@ -40,7 +40,6 @@ namespace ClubUtils
                     {
                         MembershipTracker test = new MembershipTracker();
                         test.Show();
-                        this.Close();
                         break;
                     }
 

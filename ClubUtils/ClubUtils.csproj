@@ -80,6 +80,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Member.cs" />
+    <Compile Include="MembershipTracker.xaml.cs">
+      <DependentUpon>MembershipTracker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Security.cs" />
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +101,10 @@
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MembershipTracker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
