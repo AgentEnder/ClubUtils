@@ -42,4 +42,4 @@ FULLCAPS: EXAMPLECONSTANT
 
 5. Attendance:
 
-| ID | ClubName | Date | FullName |
+| ID | ClubName | Date | FullName | Present |
