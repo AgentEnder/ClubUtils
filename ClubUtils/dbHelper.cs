@@ -48,19 +48,21 @@ namespace ClubUtils
             return return_data;
         }
 
-        public static List<string> getMembersFromClub(Club club)
+        public static List<string> getMembersFromClub(String club)
         {
             if (!isConnected)
                 connect();
-            SQLiteCommand sql_query = new SQLiteCommand("select ClubName from Clubs", conn);
+            SQLiteCommand sql_query = new SQLiteCommand("select FullName from Users where ClubName = '" +  club +"'", conn);
             SQLiteDataReader reader = sql_query.ExecuteReader();
             List<string> return_data = new List<string>();
             while (reader.Read())
             {
-                return_data.Add(reader["ClubName"].ToString());
+                return_data.Add(reader["FullName"].ToString());
             }
             return return_data;
         }
+
+        
 
         public static bool ExecuteNonQuery(string sql)
         {
