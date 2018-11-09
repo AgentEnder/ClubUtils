@@ -74,15 +74,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters.cs" />
+    <Compile Include="FinancialTracker.xaml.cs">
+      <DependentUpon>FinancialTracker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MassEmail.xaml.cs">
+      <DependentUpon>MassEmail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Member.cs" />
     <Compile Include="MembershipTracker.xaml.cs">
       <DependentUpon>MembershipTracker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Security.cs" />
+    <Page Include="FinancialTracker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,6 +108,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MassEmail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
