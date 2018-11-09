@@ -20,10 +20,15 @@ namespace ClubUtils
     /// </summary>
     public partial class MembershipTracker : Window
     {
-        private List<string> members = DBHelper.getMembersFromClub(Globals.currentMember.clubName);
+        private List<string> members = new List<string>();
         public MembershipTracker()
         {
             InitializeComponent();
+            List<Member> member_instances = DBHelper.getMembersFromClub(Globals.currentMember.clubName);
+            foreach (var member in member_instances)
+            {
+                members.Add(member.fullName);
+            }
             LstBoxMembership.ItemsSource = members;
         }
 

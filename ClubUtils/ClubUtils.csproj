@@ -73,7 +73,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Club.cs" />
     <Compile Include="Converters.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="MainWindow.xaml.cs">
