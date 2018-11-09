@@ -47,6 +47,21 @@ namespace ClubUtils
             }
             return return_data;
         }
+
+        public static List<string> getMembersFromClub(Club club)
+        {
+            if (!isConnected)
+                connect();
+            SQLiteCommand sql_query = new SQLiteCommand("select ClubName from Clubs", conn);
+            SQLiteDataReader reader = sql_query.ExecuteReader();
+            List<string> return_data = new List<string>();
+            while (reader.Read())
+            {
+                return_data.Add(reader["ClubName"].ToString());
+            }
+            return return_data;
+        }
+
         public static bool ExecuteNonQuery(string sql)
         {
             try
@@ -60,6 +75,11 @@ namespace ClubUtils
                 Console.WriteLine(e);
                 return false;
             }
+        }
+
+        public static SQLiteConnection getConnection()
+        {
+            return conn;
         }
 
     }

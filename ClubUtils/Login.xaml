@@ -8,6 +8,9 @@
         mc:Ignorable="d"
         Title="Club Utils" Height="450" Width="800">
     <Grid Margin="10">
+        <Grid.Resources>
+            <converters:BooleanToHiddenVisibility x:Key="boolToVis"/>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1.5*"/>
@@ -21,9 +24,6 @@
         </Grid.RowDefinitions>
         <Border Grid.Column="1" Grid.Row="1" Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2">
             <StackPanel  Orientation="Vertical">
-                <StackPanel.Resources>
-                    <converters:BooleanToHiddenVisibility x:Key="boolToVis"/>
-                </StackPanel.Resources>
                 <DockPanel Visibility="{Binding Path=IsChecked, ElementName=new_account, Converter={StaticResource boolToVis}}" Margin="5">
                     <Label Content="Full Name: " DockPanel.Dock="Left"/>
                     <TextBox Name="name" TextAlignment="Right" HorizontalAlignment="Right" Width="150" DockPanel.Dock="Right"/>
@@ -52,6 +52,9 @@
         </DockPanel>
         <Button Grid.Column="1" Grid.Row="3" Name="LogIn" Click="LogIn_Click">
             <Label Content="Log In!"/>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="3" Name="CreateAcct" Click="LogIn_Click" Visibility="{Binding Path=IsChecked, ElementName=new_account, Converter={StaticResource boolToVis}}">
+            <Label Content="Create Account!"/>
         </Button>
     </Grid>
 </Window>
