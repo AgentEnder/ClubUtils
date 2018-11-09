@@ -45,10 +45,14 @@ namespace ClubUtils
 
                 case "Financials":
                     {
+                        FinancialTracker temp = new FinancialTracker();
+                        temp.Show();
                         break;
                     }
                 case "Emails":
                     {
+                        MassEmail temp = new MassEmail();
+                        temp.Show();
                         break;
                     }
             }
