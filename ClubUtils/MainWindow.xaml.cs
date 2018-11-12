@@ -23,6 +23,7 @@ namespace ClubUtils
         {
             InitializeComponent();
             welcomeLabel.Content += Globals.currentMember.fullName;
+            myCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Now.AddDays(-1)));
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
