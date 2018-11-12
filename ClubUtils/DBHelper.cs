@@ -113,5 +113,20 @@ namespace ClubUtils
             return conn;
         }
 
+        public static List<Bulletin> getBulletinsFromClub(String club)
+        {
+            if (!isConnected)
+                connect();
+            SQLiteCommand sql_query = new SQLiteCommand("select * from Bulletins where `ClubName` = '" + club + "'", conn);
+            SQLiteDataReader reader = sql_query.ExecuteReader();
+            List<Bulletin> return_data = new List<Bulletin>();
+            while (reader.Read())
+            {
+                Bulletin temp = new Bulletin(reader["Heading"].ToString(), DateTime.Parse(reader["Timestamp"].ToString()), reader["Text"].ToString(), club);
+                return_data.Add(temp);
+            }
+            return return_data;
+        }
+
     }
 }

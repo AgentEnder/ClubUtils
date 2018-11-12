@@ -17,7 +17,8 @@ namespace ClubUtils
         public MainWindow(Member member)
         {
             InitializeComponent();
-            welcomeLabel.Content += Globals.currentMember.fullName;
+            /////Calendar Updates
+            #region Calendar Updates
             List<Event> dates = DBHelper.getEventsFromClub(Globals.currentMember.clubName);
             foreach (Event item in dates) //LOOP THROUGH EVENTS
             {
@@ -57,6 +58,10 @@ namespace ClubUtils
                 currMin = item.AddDays(1);
             }
             myCalendar.BlackoutDates.Add(new CalendarDateRange(currMin, DateTime.MaxValue));
+            #endregion
+            #region Bulletin Updates
+
+            #endregion 
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

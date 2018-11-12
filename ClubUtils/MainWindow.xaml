@@ -39,15 +39,25 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Welcome " Name ="welcomeLabel" FontSize="48" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+            <!--Bulletin XAML-->
+            <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2" Grid.Column="1" Grid.RowSpan="3" Grid.Row="0">
+                <DockPanel>
+                    <Label DockPanel.Dock="Top" Content="Bulletins" FontSize="48" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Separator BorderBrush="Gainsboro" BorderThickness="2" DockPanel.Dock="Top"/>
+                    <StackPanel DockPanel.Dock="Bottom" Name="BulletinPanel">
+                        
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+            <!--Calendar XAML-->
             <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2" Grid.Column="2" Grid.RowSpan="3" Grid.Row="0">
                 <StackPanel>
                     <Calendar Name="myCalendar" SelectionMode="SingleDate" SelectedDatesChanged="myCalendar_SelectedDatesChanged">
                         <Calendar.CalendarDayButtonStyle>
                             <Style TargetType="CalendarDayButton" BasedOn="{StaticResource {x:Type CalendarDayButton}}">
                                 <Style.Triggers>
-                                    <Trigger Property="IsBlackedOut" Value="True">
-                                        <Setter Property="Background" Value="LightGray"/>
+                                    <Trigger Property="IsBlackedOut" Value="False">
+                                        <Setter Property="Background" Value="DodgerBlue"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
