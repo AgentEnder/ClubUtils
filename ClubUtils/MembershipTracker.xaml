@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClubUtils"
         mc:Ignorable="d"
-        Title="MembershipTracker" Height="300" Width="300">
+        Title="MembershipTracker" Height="297.544" Width="504.638">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ListBox Name ="LstBoxMembership" HorizontalAlignment="Left" Height="144" Margin="10,40,0,0" VerticalAlignment="Top" Width="273"/>
+        <DataGrid HorizontalAlignment="Left" Height="248" Margin="10,10,0,0" VerticalAlignment="Top" Width="478" SelectionChanged="DataGrid_SelectionChanged"/>
 
     </Grid>
 </Window>

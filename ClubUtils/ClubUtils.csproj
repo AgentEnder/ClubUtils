@@ -73,6 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AttendanceTracker.xaml.cs">
+      <DependentUpon>AttendanceTracker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters.cs" />
     <Compile Include="FinancialTracker.xaml.cs">
       <DependentUpon>FinancialTracker.xaml</DependentUpon>
@@ -89,6 +92,10 @@
       <DependentUpon>MembershipTracker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Security.cs" />
+    <Page Include="AttendanceTracker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FinancialTracker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

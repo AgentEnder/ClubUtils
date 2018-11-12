@@ -29,12 +29,17 @@ namespace ClubUtils
             {
                 members.Add(member.fullName);
             }
-            LstBoxMembership.ItemsSource = members;
+          //  LstBoxMembership.ItemsSource = members;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LstBoxMembership.ItemsSource = members;
+        //    LstBoxMembership.ItemsSource = members;
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
