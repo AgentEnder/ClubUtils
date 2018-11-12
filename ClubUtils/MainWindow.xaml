@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_New" />
-                    <MenuItem Header="_Open" />
-                    <MenuItem Header="_Save" />
-                    <Separator />
-                    <MenuItem Header="_Exit" />
-                </MenuItem>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" />
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Save" />
+                <Separator />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
             <MenuItem Header="Club Admin" Click="MenuItem_Click">
                 <MenuItem Header="View Attendace" Name="Attendance" />
                 <MenuItem Header="View Membership" Name="Membership" />
@@ -23,7 +23,7 @@
             </MenuItem>
         </Menu>
 
-            <Grid DockPanel.Dock="Bottom">
+        <Grid DockPanel.Dock="Bottom">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -39,9 +39,10 @@
             <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2" Grid.Column="2" Grid.RowSpan="3" Grid.Row="0">
                 <StackPanel>
                     <Calendar Name="myCalendar" SelectionMode="SingleDate"></Calendar>
+                    <Separator BorderBrush="Gainsboro" BorderThickness="2"/>
                 </StackPanel>
             </Border>
         </Grid>
 
     </DockPanel>
-    </Window>
+</Window>
