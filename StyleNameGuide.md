@@ -16,6 +16,11 @@ lowerCamelCase with type: strExampleVariable, dblExampleVariable, intExampleVari
 
 FULLCAPS: EXAMPLECONSTANT
 
+### Dates
+
+"YYYY-MM-DD"
+
+
 ## Database
 
 ### Databases
@@ -34,7 +39,7 @@ FULLCAPS: EXAMPLECONSTANT
 
 3. Events:
 
-| ID | EventName | EventTime | ClubName |
+| ID | EventName | EventTime | StopTime | ClubName | Recurring | (NOTE: if recurring, recurs weekly on original date)
 
 4. Users:
 

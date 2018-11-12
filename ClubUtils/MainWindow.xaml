@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClubUtils"
+        xmlns:converters="clr-namespace:Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
+        <DockPanel.Resources>
+
+        </DockPanel.Resources>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" />
@@ -38,8 +42,19 @@
             <Label Content="Welcome " Name ="welcomeLabel" FontSize="48" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
             <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2" Grid.Column="2" Grid.RowSpan="3" Grid.Row="0">
                 <StackPanel>
-                    <Calendar Name="myCalendar" SelectionMode="SingleDate"></Calendar>
+                    <Calendar Name="myCalendar" SelectionMode="SingleDate" SelectedDatesChanged="myCalendar_SelectedDatesChanged">
+                        <Calendar.CalendarDayButtonStyle>
+                            <Style TargetType="CalendarDayButton" BasedOn="{StaticResource {x:Type CalendarDayButton}}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsBlackedOut" Value="True">
+                                        <Setter Property="Background" Value="LightGray"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Calendar.CalendarDayButtonStyle>
+                    </Calendar>
                     <Separator BorderBrush="Gainsboro" BorderThickness="2"/>
+                    <StackPanel Name="EventContainer"/>
                 </StackPanel>
             </Border>
         </Grid>

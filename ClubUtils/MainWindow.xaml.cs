@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ClubUtils
 {
@@ -19,12 +13,50 @@ namespace ClubUtils
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Dictionary<DateTime, List<Event>> eventLookup = new Dictionary<DateTime, List<Event>>();
         public MainWindow(Member member)
         {
             InitializeComponent();
             welcomeLabel.Content += Globals.currentMember.fullName;
-            myCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Now.AddDays(-1)));
-            CalenderBackground calenderBackground = new CalenderBackground(myCalendar);
+            List<Event> dates = DBHelper.getEventsFromClub(Globals.currentMember.clubName);
+            foreach (Event item in dates) //LOOP THROUGH EVENTS
+            {
+                Console.WriteLine("ADDING EVENT: " + item.name + " AT TIME: " + item.time.ToShortDateString());
+                if (item.recurs) //EVENT RECURS 
+                {
+                    DateTime EndAt = DateTime.Now.AddYears(1); //Force end for displayed recurrances
+                    DateTime curr = item.time;
+                    while (curr < EndAt && curr <= item.endTime)
+                    {
+                        myCalendar.BlackoutDates.Remove(new CalendarDateRange(curr));
+                        if (!eventLookup.ContainsKey(curr.Date))
+
+                        {
+                            eventLookup[curr.Date] = new List<Event>();
+                        }
+                        eventLookup[curr.Date].Add(item);
+                        curr = curr.AddDays(7);
+                    }
+                }
+                else
+                {
+                    myCalendar.BlackoutDates.Remove(new CalendarDateRange(item.time));
+                    if (!eventLookup.ContainsKey(item.time))
+                    {
+                        eventLookup[item.time.Date] = new List<Event>();
+                    }
+                    eventLookup[item.time.Date].Add(item);
+                }
+            }
+            DateTime currMin = DateTime.MinValue;
+            List<DateTime> nonBlackouts = eventLookup.Keys.ToList();
+            nonBlackouts.Sort();
+            foreach (DateTime item in nonBlackouts)
+            {
+                myCalendar.BlackoutDates.Add(new CalendarDateRange(currMin, item.AddDays(-1)));
+                currMin = item.AddDays(1);
+            }
+            myCalendar.BlackoutDates.Add(new CalendarDateRange(currMin, DateTime.MaxValue));
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -34,7 +66,7 @@ namespace ClubUtils
             switch (mi.Name)
             {
                 case "Attendance":
-                    { 
+                    {
                         break;
                     }
 
@@ -59,5 +91,23 @@ namespace ClubUtils
                     }
             }
         }
+
+        private void myCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (myCalendar.SelectedDate == null)
+            {
+                return;
+            }
+            EventContainer.Children.Clear();
+            foreach (Event item in eventLookup[(DateTime)myCalendar.SelectedDate])
+            {
+                Label temp = new Label();
+                temp.Content = item.name;
+                EventContainer.Children.Add(temp);
+            }
+        }
     }
+
+    
+
 }

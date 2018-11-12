@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SQLite;
 
 namespace ClubUtils
@@ -11,7 +8,7 @@ namespace ClubUtils
     {
         private static bool isConnected = false;
         private static SQLiteConnection conn;
-        
+
         public static bool connect()
         {
             if (isConnected)
@@ -52,7 +49,7 @@ namespace ClubUtils
         {
             if (!isConnected)
                 connect();
-            SQLiteCommand sql_query = new SQLiteCommand("select * from Users where `ClubName` = '" +  club +"'", conn);
+            SQLiteCommand sql_query = new SQLiteCommand("select * from Users where `ClubName` = '" + club + "'", conn);
             SQLiteDataReader reader = sql_query.ExecuteReader();
             List<Member> return_data = new List<Member>();
             while (reader.Read())
@@ -63,7 +60,38 @@ namespace ClubUtils
             return return_data;
         }
 
-        
+        public static List<Event> getEventsFromClub(String club)
+        {
+            if (!isConnected)
+                connect();
+            SQLiteCommand sql_query = new SQLiteCommand("select * from Events where `ClubName` = '" + club + "'", conn);
+            SQLiteDataReader reader = sql_query.ExecuteReader();
+            List<Event> return_data = new List<Event>();
+            while (reader.Read())
+            {
+                bool recurs = false;
+                short temp_r;
+                if (Int16.TryParse(reader["Recurring"].ToString(), out temp_r))
+                {
+                    if (temp_r == 1)
+                    {
+                        recurs = true;
+                    }
+                }
+                DateTime stopTime;
+                try
+                {
+                    stopTime = DateTime.Parse(reader["StopTime"].ToString());
+                }
+                catch (Exception)
+                {
+                    stopTime = DateTime.MaxValue;
+                }
+                Event temp = new Event(reader["EventName"].ToString(), DateTime.Parse(reader["EventTime"].ToString()),stopTime, reader["ClubName"].ToString(), recurs);
+                return_data.Add(temp);
+            }
+            return return_data;
+        }
 
         public static bool ExecuteNonQuery(string sql)
         {
@@ -73,7 +101,7 @@ namespace ClubUtils
                 non_query.ExecuteNonQuery();
                 return true;
             }
-            catch(SQLiteException e)
+            catch (SQLiteException e)
             {
                 Console.WriteLine(e);
                 return false;
