@@ -60,7 +60,27 @@ namespace ClubUtils
             myCalendar.BlackoutDates.Add(new CalendarDateRange(currMin, DateTime.MaxValue));
             #endregion
             #region Bulletin Updates
-
+            List<Bulletin> bulletins = DBHelper.getBulletinsFromClub(Globals.currentMember.clubName);
+            bulletins.Sort((y, x) => x.time.CompareTo(y.time)); //Descending Sort
+            foreach (var bulletin in bulletins)
+            {
+                Label heading = new Label();
+                heading.Content = bulletin.heading;
+                Label timestamp = new Label();
+                timestamp.Content = bulletin.time.ToShortDateString();
+                TextBlock body = new TextBlock();
+                body.Text = bulletin.body;
+                body.TextWrapping = TextWrapping.Wrap;
+                DockPanel temp = new DockPanel();
+                DockPanel.SetDock(timestamp, Dock.Left);
+                temp.Children.Add(timestamp);
+                StackPanel contentPanel = new StackPanel();
+                contentPanel.Children.Add(heading);
+                contentPanel.Children.Add(body);
+                DockPanel.SetDock(contentPanel, Dock.Right);
+                temp.Children.Add(contentPanel);
+                BulletinPanel.Children.Add(temp);
+            }
             #endregion 
         }
 

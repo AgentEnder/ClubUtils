@@ -76,6 +76,7 @@
     <Compile Include="AttendanceTracker.xaml.cs">
       <DependentUpon>AttendanceTracker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bulletin.cs" />
     <Compile Include="Converters.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="FinancialTracker.xaml.cs">

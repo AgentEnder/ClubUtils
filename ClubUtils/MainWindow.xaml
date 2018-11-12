@@ -45,7 +45,6 @@
                     <Label DockPanel.Dock="Top" Content="Bulletins" FontSize="48" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
                     <Separator BorderBrush="Gainsboro" BorderThickness="2" DockPanel.Dock="Top"/>
                     <StackPanel DockPanel.Dock="Bottom" Name="BulletinPanel">
-                        
                     </StackPanel>
                 </DockPanel>
             </Border>
