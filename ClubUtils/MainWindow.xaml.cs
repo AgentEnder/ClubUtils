@@ -127,6 +127,7 @@ namespace ClubUtils
             foreach (Event item in eventLookup[(DateTime)myCalendar.SelectedDate])
             {
                 Label temp = new Label();
+                HeadingLabel.Content = "Events on " + ((DateTime)myCalendar.SelectedDate).ToShortDateString();
                 temp.Content = item.name;
                 EventContainer.Children.Add(temp);
             }

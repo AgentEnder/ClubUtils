@@ -44,7 +44,7 @@
                 <DockPanel>
                     <Label DockPanel.Dock="Top" Content="Bulletins" FontSize="48" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
                     <Separator BorderBrush="Gainsboro" BorderThickness="2" DockPanel.Dock="Top"/>
-                    <StackPanel DockPanel.Dock="Bottom" Name="BulletinPanel">
+                    <StackPanel DockPanel.Dock="Bottom" Name="BulletinPanel" Margin="5">
                     </StackPanel>
                 </DockPanel>
             </Border>
@@ -63,6 +63,7 @@
                         </Calendar.CalendarDayButtonStyle>
                     </Calendar>
                     <Separator BorderBrush="Gainsboro" BorderThickness="2"/>
+                    <Label FontSize="18" Name="HeadingLabel"/>
                     <StackPanel Name="EventContainer"/>
                 </StackPanel>
             </Border>
