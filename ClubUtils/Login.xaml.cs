@@ -33,9 +33,9 @@ namespace ClubUtils
                     //Store salted and hashed pwd, salt with email
                     values += Security.sha256_hash(password.Password + email.Text) + "','";
                     values += ClubPicker.SelectedValue.ToString() + "','";
-                    values += "user')";
-                    string query = "INSERT INTO `Users`(`ID`,`FullName`,`Email`,`Password`,`ClubName`,`Rank`) VALUES " + values;
-                    Console.WriteLine(query);
+                    values += "user','";
+                    values += DateTime.Now.Year+"-"+DateTime.Now.Month+"-"+DateTime.Now.Day+"')";
+                    string query = "INSERT INTO `Users`(`ID`,`FullName`,`Email`,`Password`,`ClubName`,`Rank`,`JoinDate`) VALUES " + values;
                     DBHelper.ExecuteNonQuery(query);
                     new_account.IsChecked = !new_account.IsChecked;
                 }
