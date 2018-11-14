@@ -92,13 +92,15 @@ namespace ClubUtils
             {
                 case "Attendance":
                     {
+                        AttendanceTracker temp = new AttendanceTracker();
+                        temp.Show();
                         break;
                     }
 
                 case "Membership":
                     {
-                        MembershipTracker test = new MembershipTracker();
-                        test.Show();
+                        MembershipTracker temp = new MembershipTracker();
+                        temp.Show();
                         break;
                     }
 

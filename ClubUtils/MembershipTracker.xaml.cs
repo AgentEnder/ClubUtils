@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 
 namespace ClubUtils
@@ -24,12 +25,15 @@ namespace ClubUtils
         public MembershipTracker()
         {
             InitializeComponent();
-            List<Member> member_instances = DBHelper.getMembersFromClub(Globals.currentMember.clubName);
-            foreach (var member in member_instances)
-            {
-                members.Add(member.fullName);
-            }
-          //  LstBoxMembership.ItemsSource = members;
+
+            DataGridMembershipTracker.ItemsSource = DBHelper.getUserTable().DefaultView;
+
+        //    List<Member> member_instances = DBHelper.getMembersFromClub(Globals.currentMember.clubName);
+        //    foreach (var member in member_instances)
+        //    {
+        //        members.Add(member.fullName);
+        //    }
+        //  LstBoxMembership.ItemsSource = members;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

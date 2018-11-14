@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Data;
 
 namespace ClubUtils
 {
@@ -43,6 +44,16 @@ namespace ClubUtils
                 return_data.Add(reader["ClubName"].ToString());
             }
             return return_data;
+        }
+
+        public static DataTable getUserTable()
+        {
+            string cmdString = "Select FullName, Email, ClubName, Rank, JoinDate from Users where `ClubName` = '" + Globals.currentMember.clubName + "'";
+            SQLiteCommand cmd = new SQLiteCommand(cmdString, conn);
+            SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
+            DataTable dt = new DataTable("Users");
+            sda.Fill(dt);
+            return dt;
         }
 
         public static List<Member> getMembersFromClub(String club)
