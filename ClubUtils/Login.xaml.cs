@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ClubUtils
 {
@@ -33,7 +35,7 @@ namespace ClubUtils
                     //Store salted and hashed pwd, salt with email
                     values += Security.sha256_hash(password.Password + email.Text) + "','";
                     values += ClubPicker.SelectedValue.ToString() + "','";
-                    values += "user','";
+                    values += "User','";
                     values += DateTime.Now.Year+"-"+DateTime.Now.Month+"-"+DateTime.Now.Day+"')";
                     string query = "INSERT INTO `Users`(`ID`,`FullName`,`Email`,`Password`,`ClubName`,`Rank`,`JoinDate`) VALUES " + values;
                     DBHelper.ExecuteNonQuery(query);
@@ -55,10 +57,17 @@ namespace ClubUtils
                             Console.WriteLine(reader["FullName"] + " LOGGED IN");
                             Member member = new Member((string)reader["FullName"], (string)reader["Email"], (string)reader["ClubName"], (string)reader["Rank"]);
                             Globals.currentMember = member;
+                            Console.WriteLine("Logged in at rank: " + member.rank.ToString());
                             MainWindow temp = new MainWindow(member);
                             temp.Show();
                             this.Close();
                             return; //LOGIN COMPLETE
+                        }
+                        else
+                        {
+                            Console.WriteLine("INVALID PASSWORD");
+                            password.BorderBrush = Brushes.DarkRed;
+                            password.BorderThickness = new Thickness(2.0);
                         }
                     }
                 }
@@ -70,5 +79,19 @@ namespace ClubUtils
             }
         }
 
+
+        private void FileMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem mi = e.Source as MenuItem;
+
+            switch (mi.Name)
+            {
+                case "Exit":
+                    {
+                        this.Close();
+                    }
+                    break;
+            }
+        }
     }
 }

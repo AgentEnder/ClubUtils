@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace ClubUtils
 {
@@ -17,6 +15,10 @@ namespace ClubUtils
         public MainWindow(Member member)
         {
             InitializeComponent();
+            if (Globals.currentMember.rank > Member.ranks.USER)
+            {
+                AdminToolBar.Visibility = Visibility.Visible;
+            }
             /////Calendar Updates
             #region Calendar Updates
             List<Event> dates = DBHelper.getEventsFromClub(Globals.currentMember.clubName);
@@ -84,7 +86,7 @@ namespace ClubUtils
             #endregion 
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void AdminMenuItem_Click(object sender, RoutedEventArgs e)
         {
             MenuItem mi = e.Source as MenuItem;
 
@@ -132,8 +134,27 @@ namespace ClubUtils
                 EventContainer.Children.Add(temp);
             }
         }
+
+        private void FileMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem mi = e.Source as MenuItem;
+
+            switch (mi.Name)
+            {
+                case "LogOut":
+                    {
+                        Globals.currentMember = null;
+                        Login temp = new Login();
+                        temp.Show();
+                        this.Close();
+                    }
+                    break;
+                case "Exit":
+                    {
+                        this.Close();
+                    }
+                    break;
+            }
+        }
     }
-
-    
-
 }

@@ -32,6 +32,11 @@ namespace ClubUtils
             else
                 return Marshal.GetLastWin32Error();
         }
+        
+        public static void Clear()
+        {
+            Console.Clear();
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2118:ReviewSuppressUnmanagedCodeSecurityUsage"), SuppressUnmanagedCodeSecurity]
         [DllImport("kernel32.dll", SetLastError = true)]
