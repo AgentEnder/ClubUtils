@@ -12,14 +12,12 @@
 
         </DockPanel.Resources>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="_New" />
-                <MenuItem Header="_Open" />
-                <MenuItem Header="_Save" />
+            <MenuItem Header="_File" Click="FileMenuItem_Click">
+                <MenuItem Name ="LogOut" Header="_Log Out" />
                 <Separator />
-                <MenuItem Header="_Exit" />
+                <MenuItem Name ="Exit" Header="_Exit" />
             </MenuItem>
-            <MenuItem Header="Club Admin" Click="MenuItem_Click">
+            <MenuItem Visibility="Collapsed" Name ="AdminToolBar" Header="Club Admin" Click="AdminMenuItem_Click">
                 <MenuItem Header="View Attendace" Name="Attendance" />
                 <MenuItem Header="View Membership" Name="Membership" />
                 <MenuItem Header="View Financials" Name="Financials" />
