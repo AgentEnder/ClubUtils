@@ -7,7 +7,12 @@
         mc:Ignorable="d"
         Title="MembershipTracker" Height="297.544" Width="504.638">
     <Grid>
-        <DataGrid Name="DataGridMembershipTracker" HorizontalAlignment="Left" Height="248" Margin="10,10,0,0" VerticalAlignment="Top" Width="478" SelectionChanged="DataGrid_SelectionChanged"/>
+    <UniformGrid Margin="0,0,0,51">
 
+        <DataGrid Name="DataGridMembershipTracker" SelectionChanged="DataGrid_SelectionChanged"/>
+        
+
+    </UniformGrid>
+        <Button Content="Save Changes" Height="50" Width="80" Margin="190,222,228,-4"/>
     </Grid>
 </Window>
