@@ -65,5 +65,6 @@ namespace ClubUtils
             (new MainWindow(Globals.currentMember)).Show();
             this.Close();
         }
+
     }
 }

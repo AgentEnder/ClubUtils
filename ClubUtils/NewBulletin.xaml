@@ -10,10 +10,8 @@
         <Border BorderBrush="Gainsboro" Background="GhostWhite" BorderThickness="2.0" DockPanel.Dock="Top" Margin="5">
             <StackPanel Orientation="Vertical">
                 <TextBox Name="Heading" Text="&lt;HEADING&gt;"/>
-                <StackPanel>
-                    <ToggleButton Command="EditingCommands.ToggleBold"/>
-                </StackPanel>
-                <RichTextBox Name="BulletinText" MinHeight="256" />
+                <Label Content="To toggle bold, italics, or underline use hotkeys (Ctrl-B), (Ctrl-I), (Ctrl-U) respectively"/>
+                <RichTextBox Name="BulletinText" MinHeight="256"/>
             </StackPanel>
         </Border>
         <Button Name="CreateBtn" Click="CreateBtn_Click" DockPanel.Dock="Bottom" Width="128" Height="32">
