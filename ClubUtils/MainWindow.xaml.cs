@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ClubUtils
 {
@@ -72,9 +75,19 @@ namespace ClubUtils
                 heading.Content = bulletin.heading;
                 Label timestamp = new Label();
                 timestamp.Content = bulletin.time.ToShortDateString();
-                TextBlock body = new TextBlock();
-                body.Text = bulletin.body;
-                body.TextWrapping = TextWrapping.Wrap;
+                RichTextBox body = new RichTextBox();
+                try
+                {
+                    MemoryStream stream = new MemoryStream(ASCIIEncoding.Default.GetBytes(bulletin.body));
+                    body.Selection.Load(stream, DataFormats.Rtf);
+                }
+                catch
+                {
+                    body.AppendText("Bulletin failed to load!");
+                }
+                body.IsReadOnly = true;
+                body.BorderThickness = new Thickness(0);
+                body.Background = Brushes.GhostWhite;
                 DockPanel temp = new DockPanel();
                 DockPanel.SetDock(timestamp, Dock.Left);
                 temp.Children.Add(timestamp);
@@ -164,6 +177,12 @@ namespace ClubUtils
         private void NewEventBtn_Click(object sender, RoutedEventArgs e)
         {
             NewEvent tempWindow = new NewEvent();
+            tempWindow.Show();
+        }
+
+        private void NewBulletinBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NewBulletin tempWindow = new NewBulletin();
             tempWindow.Show();
         }
     }

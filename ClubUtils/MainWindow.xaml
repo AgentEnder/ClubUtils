@@ -69,7 +69,7 @@
             <!--Admin Tools XAML-->
             <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2" Grid.Column="3" Grid.RowSpan="3" Grid.Row="0">
                 <StackPanel Orientation="Vertical" Margin="5">
-                    <Button Width="64" Height="64">
+                    <Button Name ="NewBulletinBtn" Width="64" Height="64" Click="NewBulletinBtn_Click">
                         <Image Source="img/NewBulletin.png"/>
                     </Button>
                     <Button Name="NewEventBtn" Width="64" Height="64" Click="NewEventBtn_Click">

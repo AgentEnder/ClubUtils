@@ -76,6 +76,9 @@
     <Compile Include="AttendanceTracker.xaml.cs">
       <DependentUpon>AttendanceTracker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewBulletin.xaml.cs">
+      <DependentUpon>NewBulletin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NewEvent.xaml.cs">
       <DependentUpon>NewEvent.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
     <Page Include="MembershipTracker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewBulletin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NewEvent.xaml">
       <SubType>Designer</SubType>
