@@ -27,19 +27,37 @@ namespace ClubUtils
         {
             if (ClubPicker.SelectedIndex != -1 && email.Text != "" && password.Password.Length > 0)
             {
-                if (new_account.IsChecked == true && password_c.Password == password.Password && name.Text.Length > 0)
+                if (new_account.IsChecked == true)
                 { //CREATE NEW ACCOUNT CODE
-                    string values = "(null, '";
-                    values += name.Text + "','";
-                    values += email.Text + "','";
-                    //Store salted and hashed pwd, salt with email
-                    values += Security.sha256_hash(password.Password + email.Text) + "','";
-                    values += ClubPicker.SelectedValue.ToString() + "','";
-                    values += "User','";
-                    values += DateTime.Now.Year+"-"+DateTime.Now.Month+"-"+DateTime.Now.Day+"')";
-                    string query = "INSERT INTO `Users`(`ID`,`FullName`,`Email`,`Password`,`ClubName`,`Rank`,`JoinDate`) VALUES " + values;
-                    DBHelper.ExecuteNonQuery(query);
-                    new_account.IsChecked = !new_account.IsChecked;
+                    if (password_c.Password == password.Password && name.Text.Length > 0)
+                    {
+                        string account_exists_sql = "select count() from `Users` where " +
+                                        "`ClubName` = '" + ClubPicker.SelectedValue.ToString() +
+                                        "' and `Email` = '" + email.Text + "'";
+                        SQLiteCommand exists_sql_query = new SQLiteCommand(account_exists_sql, DBHelper.getConnection());
+                        SQLiteDataReader exists_reader = exists_sql_query.ExecuteReader();
+                        if (exists_reader.Read()) //Duplicate Account
+                        {
+                            if (Int16.Parse(exists_reader[0].ToString()) > 0) //exists_reader[0] is an obj... hard to convert to bool or int.
+                            {
+                                email.BorderBrush = Brushes.DarkRed;
+                                email.BorderThickness = new Thickness(2.0);
+                                Console.WriteLine("An account with that email address already exists!");
+                                return;
+                            }
+                        }
+                        string values = "(null, '";
+                        values += name.Text + "','";
+                        values += email.Text + "','";
+                        //Store salted and hashed pwd, salt with email
+                        values += Security.sha256_hash(password.Password + email.Text) + "','";
+                        values += ClubPicker.SelectedValue.ToString() + "','";
+                        values += "User','";
+                        values += DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day + "')";
+                        string query = "INSERT INTO `Users`(`ID`,`FullName`,`Email`,`Password`,`ClubName`,`Rank`,`JoinDate`) VALUES " + values;
+                        DBHelper.ExecuteNonQuery(query);
+                        new_account.IsChecked = !new_account.IsChecked; 
+                    }
                 }
                 else
                 { //LOGIN CODE
