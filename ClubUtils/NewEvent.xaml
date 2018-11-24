@@ -6,7 +6,8 @@
         xmlns:converters="clr-namespace:Converters"
         xmlns:local="clr-namespace:ClubUtils"
         mc:Ignorable="d"
-        Title="NewEvent" Height="250" Width="400">
+        Title="NewEvent" Height="250" Width="400"
+        ResizeMode="NoResize">
     <DockPanel>
         <DockPanel.Resources>
             <converters:BooleanToHiddenVisibility x:Key="boolToVis"/>

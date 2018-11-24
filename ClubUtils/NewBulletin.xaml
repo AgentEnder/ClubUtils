@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClubUtils"
         mc:Ignorable="d"
-        Title="NewBulletin" Height="450" Width="800">
+        Title="NewBulletin" Height="450" Width="800"
+        ResizeMode="NoResize">
     <DockPanel Margin="25">
         <Border BorderBrush="Gainsboro" Background="GhostWhite" BorderThickness="2.0" DockPanel.Dock="Top" Margin="5">
             <StackPanel Orientation="Vertical">
