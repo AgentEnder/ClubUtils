@@ -44,9 +44,9 @@ namespace ClubUtils
                 else
                 { //LOGIN CODE
                     string enc_pwd = Security.sha256_hash(password.Password + email.Text);
-                    string sql = "select * from Users where `email` like ";
+                    string sql = "select * from Users where `email` = ";
                     sql += "'" + email.Text + "'";
-                    sql += "and `ClubName` like '" + ClubPicker.SelectedValue.ToString() + "'";
+                    sql += "and `ClubName` = '" + ClubPicker.SelectedValue.ToString() + "'";
                     SQLiteCommand sql_query = new SQLiteCommand(sql, DBHelper.getConnection());
                     SQLiteDataReader reader = sql_query.ExecuteReader();
                     while (reader.Read())

@@ -11,9 +11,11 @@ namespace ClubUtils
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow instance;
         private Dictionary<DateTime, List<Event>> eventLookup = new Dictionary<DateTime, List<Event>>();
         public MainWindow(Member member)
         {
+            instance = this;
             InitializeComponent();
             if (Globals.currentMember.rank > Member.ranks.USER)
             {
@@ -157,6 +159,12 @@ namespace ClubUtils
                     }
                     break;
             }
+        }
+
+        private void NewEventBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NewEvent tempWindow = new NewEvent();
+            tempWindow.Show();
         }
     }
 }

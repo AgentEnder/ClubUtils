@@ -15,7 +15,7 @@
             <MenuItem Header="_File" Click="FileMenuItem_Click">
                 <MenuItem Name ="LogOut" Header="_Log Out" />
                 <Separator />
-                <MenuItem Name ="Exit" Header="_Exit" />
+                <MenuItem Name ="_Exit" Header="_Exit" />
             </MenuItem>
             <MenuItem Visibility="Collapsed" Name ="AdminToolBar" Header="Club Admin" Click="AdminMenuItem_Click">
                 <MenuItem Header="View Attendace" Name="Attendance" />
@@ -37,6 +37,7 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
+            <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2" Grid.Column="0" Grid.RowSpan="3" Grid.Row="0"/>
             <!--Bulletin XAML-->
             <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2" Grid.Column="1" Grid.RowSpan="3" Grid.Row="0">
                 <DockPanel>
@@ -63,6 +64,17 @@
                     <Separator BorderBrush="Gainsboro" BorderThickness="2"/>
                     <Label FontSize="18" Name="HeadingLabel"/>
                     <StackPanel Name="EventContainer"/>
+                </StackPanel>
+            </Border>
+            <!--Admin Tools XAML-->
+            <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2" Grid.Column="3" Grid.RowSpan="3" Grid.Row="0">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <Button Width="64" Height="64">
+                        <Image Source="img/NewBulletin.png"/>
+                    </Button>
+                    <Button Name="NewEventBtn" Width="64" Height="64" Click="NewEventBtn_Click">
+                        <Image Source="img/NewEvent.png"/>
+                    </Button>
                 </StackPanel>
             </Border>
         </Grid>

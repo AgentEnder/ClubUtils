@@ -76,24 +76,27 @@
     <Compile Include="AttendanceTracker.xaml.cs">
       <DependentUpon>AttendanceTracker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Bulletin.cs" />
-    <Compile Include="Converters.cs" />
-    <Compile Include="Event.cs" />
+    <Compile Include="NewEvent.xaml.cs">
+      <DependentUpon>NewEvent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NonWindowClasses\Bulletin.cs" />
+    <Compile Include="NonWindowClasses\Converters.cs" />
+    <Compile Include="NonWindowClasses\Event.cs" />
     <Compile Include="FinancialTracker.xaml.cs">
       <DependentUpon>FinancialTracker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Globals.cs" />
+    <Compile Include="NonWindowClasses\Globals.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MassEmail.xaml.cs">
       <DependentUpon>MassEmail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Member.cs" />
+    <Compile Include="NonWindowClasses\Member.cs" />
     <Compile Include="MembershipTracker.xaml.cs">
       <DependentUpon>MembershipTracker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Security.cs" />
+    <Compile Include="NonWindowClasses\Security.cs" />
     <Page Include="AttendanceTracker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -110,8 +113,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ConsoleHelper.cs" />
-    <Compile Include="DBHelper.cs" />
+    <Compile Include="NonWindowClasses\ConsoleHelper.cs" />
+    <Compile Include="NonWindowClasses\DBHelper.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -127,6 +130,10 @@
     <Page Include="MembershipTracker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewEvent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +154,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="GenerateDiagrams\ClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -155,6 +163,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\NewBulletin.png" />
+    <Resource Include="img\NewEvent.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets')" />
