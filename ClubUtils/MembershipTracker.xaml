@@ -5,14 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClubUtils"
         mc:Ignorable="d"
-        Title="MembershipTracker" Height="297.544" Width="504.638">
+        Title="MembershipTracker" Height="350" Width="551">
     <Grid>
-    <UniformGrid Margin="0,0,0,51">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="106*"/>
+            <ColumnDefinition Width="500*"/>
+        </Grid.ColumnDefinitions>
+        <UniformGrid Margin="0,0,0,51" Grid.ColumnSpan="2">
 
-        <DataGrid Name="DataGridMembershipTracker" SelectionChanged="DataGrid_SelectionChanged"/>
-        
+            <DataGrid Name="DataGridMembershipTracker" AutoGenerateColumns="True" AutoGeneratingColumn="DataGridMemberShipTracker_ItemCreated" SelectionChanged="DataGrid_SelectionChanged" HorizontalAlignment="Left"/>
 
-    </UniformGrid>
-        <Button Content="Save Changes" Height="50" Width="80" Margin="190,222,228,-4"/>
+
+        </UniformGrid>
+        <Button Name="ButtonSaveMembershipTracker" Content="Save Changes" Height="50" Width="80" Margin="105.842,268,251,1" Grid.Column="1" Click="ButtonSaveMembershipTracker_Click" HorizontalAlignment="Left"/>
     </Grid>
 </Window>

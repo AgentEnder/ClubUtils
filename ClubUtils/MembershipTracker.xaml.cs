@@ -22,28 +22,57 @@ namespace ClubUtils
     public partial class MembershipTracker : Window
     {
         private List<string> members = new List<string>();
+        MessageBoxResult result;
         public MembershipTracker()
         {
             InitializeComponent();
 
             DataGridMembershipTracker.ItemsSource = DBHelper.getUserTable().DefaultView;
+            DataGridMembershipTracker.CanUserAddRows = false;
 
-        //    List<Member> member_instances = DBHelper.getMembersFromClub(Globals.currentMember.clubName);
-        //    foreach (var member in member_instances)
-        //    {
-        //        members.Add(member.fullName);
-        //    }
-        //  LstBoxMembership.ItemsSource = members;
+            if (Globals.currentMember.rank > Member.ranks.VICE_PRESIDENT)
+            {
+                DataGridMembershipTracker.IsReadOnly = false;                
+            }
+            else
+            {
+                DataGridMembershipTracker.IsReadOnly = true;
+                ButtonSaveMembershipTracker.Visibility = Visibility.Hidden;
+                ButtonSaveMembershipTracker.Visibility = Visibility.Collapsed;
+            }
+
+
+            //    List<Member> member_instances = DBHelper.getMembersFromClub(Globals.currentMember.clubName);
+            //    foreach (var member in member_instances)
+            //    {
+            //        members.Add(member.fullName);
+            //    }
+            //  LstBoxMembership.ItemsSource = members;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonSaveMembershipTracker_Click(object sender, RoutedEventArgs e)
         {
-        //    LstBoxMembership.ItemsSource = members;
+            result = MessageBox.Show("Are you sure you want to save? These changes will be permanent.","Save?", MessageBoxButton.YesNo, MessageBoxImage.Warning); 
+            if (result == MessageBoxResult.Yes)
+            {
+                DataTable data = new DataTable();
+                data = ((DataView)DataGridMembershipTracker.ItemsSource).Table;
+                DBHelper.updateUserTable(data);
+                this.Close();
+            }
+            
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+        private void DataGridMemberShipTracker_ItemCreated(object sender, DataGridAutoGeneratingColumnEventArgs e) {
+            string headerName = e.Column.Header.ToString();
+            if (headerName == "ID")
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

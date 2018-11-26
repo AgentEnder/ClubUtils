@@ -48,12 +48,37 @@ namespace ClubUtils
 
         public static DataTable getUserTable()
         {
-            string cmdString = "Select FullName, Email, ClubName, Rank, JoinDate from Users where `ClubName` = '" + Globals.currentMember.clubName + "'";
+            if (!isConnected)
+                connect();
+            string cmdString = "Select ID, FullName, Email, ClubName, Rank, JoinDate from Users where `ClubName` = '" + Globals.currentMember.clubName + "'";
             SQLiteCommand cmd = new SQLiteCommand(cmdString, conn);
             SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
             DataTable dt = new DataTable("Users");
             sda.Fill(dt);
             return dt;
+        }
+
+      public static void updateUserTable(DataTable dt)
+        {
+            if (!isConnected)
+                connect();
+            string name;
+            foreach(DataRow row in dt.Rows)
+            {
+                name = row["FullName"].ToString();
+                if (name.Length > 0)
+                {
+                    using (SQLiteCommand cmd = new SQLiteCommand("UPDATE Users SET FullName=@FullName, Email=@Email, Rank=@Rank WHERE ID=@ID", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@FullName", row["FullName"].ToString() );
+                        cmd.Parameters.AddWithValue("@Email",row["Email"].ToString());
+                        cmd.Parameters.AddWithValue("@Rank", row["Rank"].ToString());
+                        cmd.Parameters.AddWithValue("@Id", row["ID"]);
+                        int rows = cmd.ExecuteNonQuery();
+                    }
+                    
+                }
+            }
         }
 
         public static List<Member> getMembersFromClub(String club)
@@ -138,6 +163,7 @@ namespace ClubUtils
             }
             return return_data;
         }
+
 
     }
 }
