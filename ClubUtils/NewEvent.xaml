@@ -6,29 +6,29 @@
         xmlns:converters="clr-namespace:Converters"
         xmlns:local="clr-namespace:ClubUtils"
         mc:Ignorable="d"
-        Title="NewEvent" Height="250" Width="400"
-        ResizeMode="NoResize">
+        Title="NewEvent" Width="400"
+        ResizeMode="NoResize" MinHeight="175" Height="175">
     <DockPanel>
         <DockPanel.Resources>
             <converters:BooleanToHiddenVisibility x:Key="boolToVis"/>
         </DockPanel.Resources>
-        <Border BorderBrush="Gainsboro" Background="GhostWhite" BorderThickness="2" DockPanel.Dock="Top">
+        <Border BorderBrush="Gainsboro" Background="GhostWhite" BorderThickness="2" DockPanel.Dock="Top" Margin="5">
             <StackPanel Orientation="Vertical">
                 <DockPanel>
                     <Label Content="Event Name: " DockPanel.Dock="Left"/>
-                    <TextBox Name ="EventName" DockPanel.Dock="Right"/>
+                    <TextBox Name ="EventName" DockPanel.Dock="Right" Width="300" HorizontalAlignment="Right"/>
                 </DockPanel>
                 <DockPanel>
                     <Label Content="Start Date: " DockPanel.Dock="Left"/>
-                    <DatePicker Name="StartDatePicker" DockPanel.Dock="Right"/>
+                    <DatePicker Name="StartDatePicker" DockPanel.Dock="Right" Width="300" HorizontalAlignment="Right"/>
                 </DockPanel>
                 <DockPanel>
-                    <Label Content="Recurring? : " DockPanel.Dock="Left"/>
-                    <CheckBox Name="RecurringCheck" DockPanel.Dock="Right" VerticalAlignment="Center"/>
+                    <Label Content="Weekly?" DockPanel.Dock="Left"/>
+                    <CheckBox Name="RecurringCheck" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF6E6E6E" Foreground="#FF3A00FF" IsChecked="True"/>
                 </DockPanel>
                 <DockPanel Visibility="{Binding Path=IsChecked, ElementName=RecurringCheck, Converter={StaticResource boolToVis}}">
                     <Label Content="End Date: " DockPanel.Dock="Left"/>
-                    <DatePicker Name="EndDatePicker" DockPanel.Dock="Right"/>
+                    <DatePicker Name="EndDatePicker" DockPanel.Dock="Right" Width="296" HorizontalAlignment="Right"/>
                 </DockPanel>
             </StackPanel>
         </Border>
