@@ -35,7 +35,7 @@ namespace ClubUtils
             {
                 result();
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 tb.Text = "Error!";
             }

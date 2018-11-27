@@ -81,6 +81,54 @@ namespace ClubUtils
             }
         }
 
+        public static void appendAttendanceTable(DataTable dt)
+        {
+            if (!isConnected)
+                connect();
+            foreach (DataRow row in dt.Rows)
+            {
+                try
+                {
+                    using (SQLiteCommand cmd = new SQLiteCommand("INSERT INTO `Attendance` (ClubName, Date, FullName, Present) VALUES (@ClubName, @Date, @FullName, @Present)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@FullName", row["FullName"].ToString());
+                        cmd.Parameters.AddWithValue("@ClubName", row["ClubName"].ToString());
+                        cmd.Parameters.AddWithValue("@Date", row["Date"].ToString());
+                        cmd.Parameters.AddWithValue("@Present", row["Present"]);
+                        int rows = cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (SQLiteException e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
+
+        public static DataTable getAttendanceList()
+        {
+            if (!isConnected)
+                connect();
+            string cmdString = "Select ClubName, FullName from Users where `ClubName` = '" + Globals.currentMember.clubName + "'";
+            SQLiteCommand cmd = new SQLiteCommand(cmdString, conn);
+            SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
+            DataTable dt = new DataTable("Users");
+            sda.Fill(dt);
+            return dt;
+        }
+
+        public static DataTable getAttendanceTable(string date)
+        {
+            if (!isConnected)
+                connect();
+            string cmdString = "Select ClubName, Date, FullName, Present from Attendance where `ClubName` = '" + Globals.currentMember.clubName + "' AND `Date` = '" + date + "'";
+            SQLiteCommand cmd = new SQLiteCommand(cmdString, conn);
+            SQLiteDataAdapter sda = new SQLiteDataAdapter(cmd);
+            DataTable dt = new DataTable("Attendance");
+            sda.Fill(dt);
+            return dt;
+        }
+
         public static List<Member> getMembersFromClub(String club)
         {
             if (!isConnected)

@@ -12,10 +12,7 @@
             <ColumnDefinition Width="500*"/>
         </Grid.ColumnDefinitions>
         <UniformGrid Margin="0,0,0,51" Grid.ColumnSpan="2">
-
             <DataGrid Name="DataGridMembershipTracker" AutoGenerateColumns="True" AutoGeneratingColumn="DataGridMemberShipTracker_ItemCreated" SelectionChanged="DataGrid_SelectionChanged" HorizontalAlignment="Left"/>
-
-
         </UniformGrid>
         <Button Name="ButtonSaveMembershipTracker" Content="Save Changes" Height="50" Width="80" Margin="105.842,268,251,1" Grid.Column="1" Click="ButtonSaveMembershipTracker_Click" HorizontalAlignment="Left"/>
     </Grid>

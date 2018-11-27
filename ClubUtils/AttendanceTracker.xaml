@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClubUtils"
         mc:Ignorable="d"
-        Title="AttendanceTracker" Height="300" Width="300">
-    <Grid>
-        
+        Title="AttendanceTracker" Height="423.917" Width="560.215">
+    <Grid Margin="0,0,-23,9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="766*"/>
+        </Grid.ColumnDefinitions>
+        <UniformGrid Margin="0,0,313,58" Grid.ColumnSpan="2">
+            <DataGrid Name="DataGridAttendanceTracker" Margin="0,0,-145,0" Width="407" AutoGenerateColumns="True" HorizontalAlignment="Left">
+            </DataGrid>
+        </UniformGrid>
+        <Button Name="ButtonAttendanceTracker" Content="Save Attendance" HorizontalAlignment="Left" Height="45" Margin="107,331,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1" Click="ButtonAttendanceTracker_Click"/>
+        <DatePicker Name="DatePickerAttendanceTracker" Grid.Column="1" HorizontalAlignment="Left" Margin="381,10,0,0" VerticalAlignment="Top" Height="25" Width="113" SelectedDateFormat="Short" SelectedDateChanged="DatePickerAttendanceTracker_SelectedDateChanged"/>
     </Grid>
 </Window>
