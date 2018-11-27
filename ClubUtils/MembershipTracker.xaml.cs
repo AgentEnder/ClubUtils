@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Data;
 
 
 namespace ClubUtils
@@ -32,7 +22,7 @@ namespace ClubUtils
 
             if (Globals.currentMember.rank > Member.ranks.VICE_PRESIDENT)
             {
-                DataGridMembershipTracker.IsReadOnly = false;                
+                DataGridMembershipTracker.IsReadOnly = false;
             }
             else
             {
@@ -52,7 +42,7 @@ namespace ClubUtils
 
         private void ButtonSaveMembershipTracker_Click(object sender, RoutedEventArgs e)
         {
-            result = MessageBox.Show("Are you sure you want to save? These changes will be permanent.","Save?", MessageBoxButton.YesNo, MessageBoxImage.Warning); 
+            result = MessageBox.Show("Are you sure you want to save? These changes will be permanent.", "Save?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
                 DataTable data = new DataTable();
@@ -60,14 +50,15 @@ namespace ClubUtils
                 DBHelper.updateUserTable(data);
                 this.Close();
             }
-            
+
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
-        private void DataGridMemberShipTracker_ItemCreated(object sender, DataGridAutoGeneratingColumnEventArgs e) {
+        private void DataGridMemberShipTracker_ItemCreated(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
             string headerName = e.Column.Header.ToString();
             if (headerName == "ID")
             {

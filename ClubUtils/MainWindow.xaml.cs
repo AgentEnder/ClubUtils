@@ -24,6 +24,10 @@ namespace ClubUtils
             {
                 AdminToolBar.Visibility = Visibility.Visible;
             }
+            if (Globals.currentMember.rank < Member.ranks.TREASURER)
+            {
+                Financials.Visibility = Visibility.Collapsed;
+            }
             /////Calendar Updates
             #region Calendar Updates
             List<Event> dates = DBHelper.getEventsFromClub(Globals.currentMember.clubName);
