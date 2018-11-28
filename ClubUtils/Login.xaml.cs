@@ -25,10 +25,15 @@ namespace ClubUtils
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            if (ClubPicker.SelectedIndex != -1 && email.Text != "" && password.Password.Length > 0)
+            if (ClubPicker.SelectedIndex != -1 && email.Text.Length > 3 && password.Password.Length > 0)
             {
                 if (new_account.IsChecked == true)
                 { //CREATE NEW ACCOUNT CODE
+                    if (email.Text.Substring(email.Text.Length-3) != "edu")
+                    {
+                        Console.WriteLine("Email must end in .edu!");
+                        return;
+                    }
                     if (password_c.Password == password.Password && name.Text.Length > 0)
                     {
                         string account_exists_sql = "select count() from `Users` where " +
