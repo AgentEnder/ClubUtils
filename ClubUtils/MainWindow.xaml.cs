@@ -23,6 +23,11 @@ namespace ClubUtils
             if (Globals.currentMember.rank > Member.ranks.USER)
             {
                 AdminToolBar.Visibility = Visibility.Visible;
+                NewBulletinBtn.Visibility = Visibility.Visible;
+            }
+            if (Globals.currentMember.rank >= Member.ranks.VICE_PRESIDENT)
+            {
+                NewEventBtn.Visibility = Visibility.Visible;
             }
             if (Globals.currentMember.rank < Member.ranks.TREASURER)
             {

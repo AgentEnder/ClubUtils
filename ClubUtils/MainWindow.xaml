@@ -71,10 +71,10 @@
             <!--Admin Tools XAML-->
             <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="2" Grid.Column="3" Grid.RowSpan="3" Grid.Row="0">
                 <StackPanel Orientation="Vertical" Margin="5">
-                    <Button Name ="NewBulletinBtn" Width="64" Height="64" Click="NewBulletinBtn_Click">
+                    <Button Name ="NewBulletinBtn" Width="64" Height="64" Click="NewBulletinBtn_Click" Visibility="Collapsed">
                         <Image Source="img/NewBulletin.png"/>
                     </Button>
-                    <Button Name="NewEventBtn" Width="64" Height="64" Click="NewEventBtn_Click">
+                    <Button Name="NewEventBtn" Width="64" Height="64" Click="NewEventBtn_Click" Visibility="Collapsed">
                         <Image Source="img/NewEvent.png"/>
                     </Button>
                 </StackPanel>
