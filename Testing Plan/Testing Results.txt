@@ -1,4 +1,4 @@
-Testing Results:
+﻿Testing Results:
 
 Login Screen:
 	•Tested security class to ensure sha-256 operating properly.
@@ -60,3 +60,29 @@ New Event Screen:
 	•Test Event name field against SQL Injection
 		•Vulnerable, Fail.
 			•Future Work
+
+Membership Tracker:
+	•Tested if only president and advisor could edit member info
+		•Only president and advisor could edit member info, pass.
+	•Tested if all cabinet members could view member info
+		•All cabinet members could view member info, pass.
+	•Tested if edits made by the president and advisor saved to database correctly
+		•Edits saved properly to database, pass.
+	•Tested SQL Injection on all data fields in member data
+		•Saved the sql statements in the database as strings and did not run them, pass.
+	•Tested if changing a user's email in the member data would change their login credentials
+		•The user's email properly updated and changed their login credentials to the new email, pass.
+
+Attendance Tracker:
+	•Tested if all cabinet members could take attendance for a selected day from the date picker
+		•All cabinet members could properly take attendance, pass.
+	•Tested if check boxs worked properly for taking attendance
+		•Check boxs would not appear in the datagrid, FAIL.
+			•Left field as an integer until further work could be done.
+	•Tested if the save button would only show up for the dates that have not already taken attendance
+		•Save buttons was always showing up, FAIL.
+			•Forced button to always be invisible unless a new date was selected
+	•Tested SQL Injection on all data fields in attendance data
+		•Saved the sql statements in the database as strings and did not run them, pass.
+	•Tested if the data field "Present" would accept non integer values
+		•The data field would not allow non integer values to be inputed, pass.
