@@ -1,0 +1,62 @@
+Testing Results:
+
+Login Screen:
+	•Tested security class to ensure sha-256 operating properly.
+		•Generated hashes match externally generated hashes, pass.
+	•Tested salting passwords by running account creation for multiple accounts with same password.
+		•Hashes different, pass.
+	•Test Exit button by clicking it,
+		•Program closes, pass.
+		
+Main Screen/Dashboard:
+	Calendar:
+		•Tested events on current day
+			•Display correctly, pass.
+		•Tested events in far past
+			•Display correctly, pass.
+		•Tested events in far future
+			•Display correctly, pass.
+		•Tested recurring events, with no end date
+			•Program bogged down due to adding event until max DateTime instance
+				•Cap recurring events to only display for next year.
+		•Tested recurring events with end date prior to beginning date.
+			•Doesn't display at all, valid behavior, pass.
+	
+	Bulletins:
+		•Tested retrieval of RTF from db.
+			•Parses properly and loads bulletins, pass.
+		•Tested retrieval of multiple bulletins
+			•Sorted backwards, fail.
+				•Fix sort, pass.
+		•Tested no bulletins
+			•Nothing displays, pass.
+	
+	Admin Toolbar:
+		•Tested logging in with various roles
+			•Menu options only show when they should, pass.
+		•Tested clicking on each option
+			•Applicable windows open, pass.
+		
+	Admin Icons (+Bulletin, +Event):
+		•Tested by clicking on each icon
+			•Applicable window opens.
+		•Tested while logged in with various roles
+			•Always visible, FAIL.
+				•Fix visibility, collapsed when not available. Pass.
+				
+New Bulletin Screen:
+	•Tested with plaintext first
+		•Bulletins are saved properly, pass.
+	•Switched to Rich Text formatting
+		•Serialization of rtf into db string fails, FAIL.
+			•Fixed serialization, pass.
+	•Tested against SQL Injection
+		•New bulletin saved, but empty. Reveals SQL Injection weakness, FAIL.
+			•Future Work.
+			
+New Event Screen:
+	•Tested with multiple dats (far past, present, far future):
+		•All save properly, pass.
+	•Test Event name field against SQL Injection
+		•Vulnerable, Fail.
+			•Future Work
