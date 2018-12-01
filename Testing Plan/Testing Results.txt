@@ -7,6 +7,12 @@ Login Screen:
 		•Hashes different, pass.
 	•Test Exit button by clicking it,
 		•Program closes, pass.
+	•Testing multiple accounts with same email and same club
+		•Creates multiple logins, each their own user. FAIL
+			•Disallow multiple logins per email per club, Pass
+	•Attempt to create account with non-.edu email
+		•Account created, FAIL.
+			•Check last 3 characters in email against EDU, prevents .coms, .orgs etc. PASS
 		
 Main Screen/Dashboard:
 	Calendar:
